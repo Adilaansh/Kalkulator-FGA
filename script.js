@@ -3,11 +3,12 @@ const updateScreen = (number) => {
     calcScreen.value = number;
 }
 
+//mengembalikan nilai HMTL selection//
 const numbers = document.querySelectorAll(".number");
 
 numbers.forEach((number) =>{
-    number.addEventListener("click", (e) =>{
-        updateScreen(e.target.value);
+    number.addEventListener("click", (e) =>{ //button sudah dapat di klik//
+        updateScreen(e.target.value); //button yang di-klik dapat ditampilkan//
     });
 });
 
@@ -56,6 +57,7 @@ equalSign.addEventListener("click", ()=>{
     updateScreen(currNum)
 })
 
+//operasi perhitungan//
 const calculate = () =>{
     let result = ""
     switch(calcOpr){
@@ -94,6 +96,25 @@ clearBtn.addEventListener("click", () =>{
     updateScreen(currNum)
 })
 
+//presentase//
+const percentages = document.querySelector(".percentage");
+
+percentages.addEventListener("click",(event) => {
+    percenting()
+});
+
+percenting = (nyeh) => {
+    if (prevNumber === "") {
+        currentNumber = currentNumber/100;
+        updateScreen(currentNumber);
+    }
+    if (prevNumber !== "") {
+        currentNumber = (prevNumber*currentNumber)/100;
+        updateScreen(currentNumber);
+    }
+};
+
+//decimal//
 inputDecimal = (dot) =>{
     if(currNum.includes('.')){
         return
